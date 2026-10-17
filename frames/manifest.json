@@ -1,0 +1,29 @@
+{
+  "width": 1024,
+  "height": 580,
+  "ext": "webp",
+  "segments": {
+    "idle": {
+      "count": 23,
+      "fps": 15
+    },
+    "left": {
+      "count": 14,
+      "fps": 15
+    },
+    "right": {
+      "count": 18,
+      "fps": 15
+    },
+    "center": {
+      "count": 30,
+      "fps": 15
+    },
+    "greet": {
+      "count": 68,
+      "fps": 15
+    }
+  },
+  "focusX": 0.505,
+  "fitWidth": 0.568
+}

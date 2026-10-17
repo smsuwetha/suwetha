@@ -1,0 +1,2395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suwetha S | Full-Stack Developer</title>
+  <meta name="description" content="Suwetha S - Full-Stack Developer | React | Next.js | Python | Flask | MySQL | MCA Graduate">
+  <meta name="keywords" content="Suwetha S, Full Stack Developer, React, Next.js, Python, Frontend Developer">
+  <meta name="author" content="Suwetha S">
+  <meta property="og:title" content="Suwetha S | Full-Stack Developer Portfolio">
+  <meta property="og:description" content="Showcasing projects in React, Next.js, Python, and more.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2360a5fa'/%3E%3Cstop offset='50%25' stop-color='%23a78bfa'/%3E%3Cstop offset='100%25' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='%230f172a'/%3E%3Ctext x='50' y='68' font-size='55' font-family='Arial' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #fff7fb 0%, #fdeef6 50%, #fff7fb 100%);
+      color: #4a0f2e;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(214, 51, 108, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214, 51, 108, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+      transform: translateY(var(--parallax, 0px));
+    }
+
+    /* Navbar */
+  .navbar { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 14px 30px; background: rgba(255, 250, 251, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid #6b2a4e; }
+  .navbar .brand { font-weight: 700; font-size: 16px; background: linear-gradient(90deg, #d6336c, #e64a8a, #f7a1c4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .navbar .nav-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+  .navbar .nav-links a { color: #6b2a4e; text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 4px; border-bottom: 2px solid transparent; transition: color 0.25s ease, border-color 0.25s ease; }
+  .navbar .nav-links a:hover, .navbar .nav-links a.active { color: #d6336c; border-color: #d6336c; }
+
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(214, 51, 108, 0.1);
+      border: 1px solid rgba(214, 51, 108, 0.3);
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(214, 51, 108, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(214, 51, 108, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: slideInDown 0.8s ease;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 30px;
+      border: 4px solid #c2185b;
+      box-shadow: 0 0 0 12px rgba(214, 51, 108, 0.1), 0 20px 40px rgba(214, 51, 108, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      margin: 20px 0;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #d6336c 0%, #e64a8a 50%, #f7a1c4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #8a4d6e;
+      max-width: 600px;
+      margin: 15px auto;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(214, 51, 108, 0.15);
+      border: 1px solid rgba(214, 51, 108, 0.4);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      color: #d6336c;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(214, 51, 108, 0.12);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c2185b, #b0205a);
+      color: white;
+      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(214, 51, 108, 0.4);
+    }
+
+    .btn-secondary {
+      border: 2px solid #c2185b;
+      color: #d6336c;
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(214, 51, 108, 0.1);
+      transform: translateY(-4px);
+    }
+
+    /* Stats Section */
+    .stats-wrapper, .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(214, 51, 108, 0.1), rgba(176, 32, 90, 0.08));
+      backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(214, 51, 108, 0.3);
+      padding: 40px 25px;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(214, 51, 108, 0.1), inset 0 1px 1px rgba(214, 51, 108, 0.12);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(214, 51, 108, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-12px);
+      background: linear-gradient(135deg, rgba(214, 51, 108, 0.15), rgba(176, 32, 90, 0.12));
+      border-color: rgba(214, 51, 108, 0.5);
+      box-shadow: 0 16px 48px rgba(214, 51, 108, 0.2), inset 0 1px 1px rgba(214, 51, 108, 0.16);
+    }
+
+    .stat-number {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      background: linear-gradient(135deg, #d6336c, #e64a8a, #ec6fa0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #6b2a4e;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: capitalize;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(214, 51, 108, 0.1);
+    }
+
+    /* Smaller Contact Section */
+    #contact {
+      padding: 50px 20px;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    #contact h2 {
+      margin-bottom: 20px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #c2185b, #e64a8a);
+      border-radius: 2px;
+    }
+
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, #c2185b, transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      margin-right: 50%;
+      padding-right: 40px;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+      padding-left: 40px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #fff7fb;
+      border: 3px solid #c2185b;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 12px rgba(214, 51, 108, 0.1);
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      padding: 25px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(214, 51, 108, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #d6336c;
+      margin-bottom: 5px;
+    }
+
+    .timeline-subtitle {
+      font-size: 14px;
+      color: #9a6382;
+      margin-bottom: 10px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: #6b2a4e;
+      line-height: 1.6;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #c2185b, #e64a8a, #f7a1c4);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: 2;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(214, 51, 108, 0.4);
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 40px rgba(214, 51, 108, 0.2);
+    }
+
+    .project-header {
+      height: 200px;
+      background: linear-gradient(135deg, rgba(214, 51, 108, 0.2), rgba(176, 32, 90, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(214, 51, 108, 0.12), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50%, 50%); }
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #4a0f2e;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-title {
+      color: #d6336c;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: #6b2a4e;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tech-tag {
+      font-size: 11px;
+      padding: 6px 12px;
+      background: rgba(214, 51, 108, 0.15);
+      border: 1px solid rgba(214, 51, 108, 0.3);
+      border-radius: 20px;
+      color: #f58bb5;
+      transition: all 0.2s ease;
+    }
+
+    .tech-tag:hover {
+      background: rgba(214, 51, 108, 0.3);
+      border-color: rgba(214, 51, 108, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-link {
+      flex: 1;
+      padding: 10px;
+      background: rgba(214, 51, 108, 0.2);
+      border: 1px solid rgba(214, 51, 108, 0.3);
+      color: #d6336c;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .project-link:hover {
+      background: #c2185b;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      background: rgba(255, 255, 255, 0.5);
+      border-color: rgba(214, 51, 108, 0.4);
+      transform: translateY(-8px);
+    }
+
+    .skill-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #d6336c;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-item {
+      padding: 8px 14px;
+      background: rgba(214, 51, 108, 0.15);
+      border: 1px solid rgba(214, 51, 108, 0.3);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #6b2a4e;
+      transition: all 0.2s ease;
+    }
+
+    .skill-item:hover {
+      background: rgba(214, 51, 108, 0.3);
+      color: #f58bb5;
+      border-color: rgba(214, 51, 108, 0.5);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* About Me Section */
+    .about-me {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(214, 51, 108, 0.05));
+      border-radius: 20px;
+      margin: 60px 0;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-me h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 30px;
+      text-align: center;
+      color: #4a0f2e;
+      font-weight: 800;
+    }
+
+    .about-typed {
+      font-size: 16px;
+      color: #6b2a4e;
+      margin-bottom: 40px;
+      text-align: center;
+      min-height: 30px;
+    }
+
+    .about-me-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-typed-content {
+      font-size: 15px;
+      color: #6b2a4e;
+      line-height: 1.8;
+      text-align: justify;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .about-me-text p {
+      font-size: 15px;
+      color: #6b2a4e;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    /* Certifications Section */
+    .certifications { padding: 60px 20px; border-bottom: 1px solid #6b2a4e; }
+  .certifications h2 { font-size: 32px; margin-bottom: 30px; text-align: center; }
+  .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .cert-card { background: rgba(255, 255, 255, 0.5); border: 1px solid #6b2a4e; border-radius: 8px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; }
+  .cert-icon { font-size: 22px; }
+  .cert-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .cert-meta { font-size: 12px; color: #9a6382; margin-bottom: 6px; }
+  .cert-id { font-size: 11px; color: #f58bb5; background: rgba(255, 255, 255, 0.5); border: 1px solid #6b2a4e; border-radius: 4px; padding: 3px 8px; display: inline-block; }    
+
+    /* Contact Section */
+    .contact-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      padding: 30px;
+      border-radius: 16px;
+      display: grid;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #6b2a4e;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 10px 14px;
+      background: rgba(255, 250, 251, 0.5);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      border-radius: 8px;
+      color: #4a0f2e;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      font-size: 13px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #9a6382;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #c2185b;
+      background: rgba(255, 250, 251, 0.7);
+      box-shadow: 0 0 0 3px rgba(214, 51, 108, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-status {
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .form-status.success {
+      background: rgba(47, 133, 90, 0.2);
+      border: 1px solid rgba(47, 133, 90, 0.4);
+      color: #2f855a;
+    }
+
+    .form-status.error {
+      background: rgba(185, 28, 28, 0.2);
+      border: 1px solid rgba(185, 28, 28, 0.4);
+      color: #b91c1c;
+    }
+
+    .contact-sub {
+      text-align: center;
+      color: #6b2a4e;
+      font-size: 14px;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-submit-btn {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #c2185b, #e64a8a);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .contact-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(214, 51, 108, 0.3);
+    }
+
+    .contact-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(214, 51, 108, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(214, 51, 108, 0.1);
+      border: 1px solid rgba(214, 51, 108, 0.3);
+      border-radius: 50%;
+      color: #d6336c;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 18px;
+    }
+
+    .social-link:hover {
+      background: #c2185b;
+      color: white;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 16px rgba(214, 51, 108, 0.3);
+    }
+
+    /* Typing Cursor Animation */
+    .typing-line {
+       font-size: 16px;
+        color: #f58bb5;
+         min-height: 24px; 
+         margin-top: 6px; 
+         font-weight: 600; }
+  .typing-cursor { 
+    display: inline-block; 
+    width: 2px; background: #f58bb5; 
+    margin-left: 2px; 
+    animation: blink 0.8s step-end infinite; }
+  
+  @keyframes blink {50% { opacity: 0; } }
+
+    /* Social Icons - Horizontal Layout */
+    .social-row {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(214, 51, 108, 0.15), rgba(176, 32, 90, 0.1));
+      border: 1.5px solid rgba(214, 51, 108, 0.3);
+      border-radius: 50%;
+      color: #d6336c;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .social-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .social-icon:hover {
+      background: linear-gradient(135deg, #d6336c, #e64a8a);
+      color: white;
+      transform: translateY(-8px) scale(1.15);
+      box-shadow: 0 12px 24px rgba(214, 51, 108, 0.4);
+      border-color: rgba(214, 51, 108, 0.6);
+    }
+
+    .footer-text {
+      color: #9a6382;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-text strong {
+      color: #d6336c;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 24px;
+      height: 24px;
+      color: #d6336c;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 10px); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .timeline::before {
+        left: 0;
+      }
+
+      .timeline-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 40px !important;
+      }
+
+      .timeline-dot {
+        left: 0;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px) scale(1.01);
+      }
+
+      .stats-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid, .skills-grid, .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Contact Info Section */
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .contact-info-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(214, 51, 108, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(214, 51, 108, 0.4);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .contact-info-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .contact-info-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #6b2a4e;
+      margin-bottom: 8px;
+    }
+
+    .contact-info-link {
+      color: #d6336c;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      word-break: break-all;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-link:hover {
+      color: #e64a8a;
+      text-decoration: underline;
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #fff7fb 0%, #4a0f2e 50%, #fff7fb 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-ring {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(214, 51, 108, 0.2);
+      border-top-color: #c2185b;
+      border-right-color: #e64a8a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+      margin-top: 20px;
+      color: #d6336c;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Light mode */
+    body.light-mode {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+      color: #4a0f2e;
+    }
+
+    body.light-mode .hero p,
+    body.light-mode .project-desc,
+    body.light-mode .timeline-desc {
+      color: #6b2a4e;
+    }
+
+    body.light-mode .nav-links a {
+      color: #6b2a4e;
+    }
+
+    body.light-mode .navbar {
+      background: rgba(248, 250, 252, 0.7);
+      border-bottom-color: rgba(214, 51, 108, 0.15);
+    }
+
+    body.light-mode .btn-secondary {
+      border-color: #c2185b;
+    }
+
+    body.light-mode .project-card,
+    body.light-mode .skill-category,
+    body.light-mode .cert-card,
+    body.light-mode .stat-card,
+    body.light-mode .contact-form {
+      background: rgba(241, 245, 249, 0.5);
+      border-color: rgba(214, 51, 108, 0.15);
+    }
+
+    body.light-mode .project-card:hover,
+    body.light-mode .skill-category:hover,
+    body.light-mode .cert-card:hover,
+    body.light-mode .stat-card:hover {
+      background: rgba(241, 245, 249, 0.8);
+      border-color: rgba(214, 51, 108, 0.3);
+    }
+
+    /* ===== Interactive character hero (ih-) ===== */
+    .ih-hero {
+      position: relative; isolation: isolate; width: 100%; overflow: hidden;
+      height: calc(100svh - 60px); min-height: 560px;
+      background:
+        radial-gradient(120% 90% at 50% 42%, rgba(200,40,110,0) 58%, rgba(200,40,110,.14) 100%),
+        linear-gradient(90deg, #f08fb5 0%, #f7b8d2 13%, #fbdbe8 28%, #fff4f9 42%, #ffffff 50%,
+                                #fff4f9 58%, #fbdbe8 72%, #f7b8d2 87%, #f08fb5 100%);
+    }
+    .ih-glow {
+      position: absolute; left: 50%; top: 58%; width: min(78vw, 1100px); height: 82%;
+      transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+      background: radial-gradient(closest-side, #fff 0%, rgba(255,255,255,.92) 38%, rgba(255,255,255,0) 100%);
+      filter: blur(28px);
+    }
+    .ih-stage { position: relative; z-index: 1; height: 100%; max-width: 1600px; margin: 0 auto; display: flex; flex-direction: column; }
+    .ih-note { position: relative; z-index: 10; text-align: center; padding: 18px 24px 4px; color: #5a1438; }
+    .ih-title { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.04; letter-spacing: -.01em; }
+    .ih-role { margin-top: 8px; font-size: 13px; font-weight: 500; letter-spacing: .06em; opacity: .75; }
+    .ih-hint { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12px; letter-spacing: .03em; opacity: .85; }
+    .ih-wrap { position: relative; flex: 1; min-height: 0; }
+    #ihCharacter {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      opacity: 0; transition: opacity .6s ease; mix-blend-mode: multiply;
+      -webkit-mask-image: radial-gradient(ellipse 52% 70% at 50% 56%, #000 60%, transparent 100%);
+              mask-image: radial-gradient(ellipse 52% 70% at 50% 56%, #000 60%, transparent 100%);
+    }
+    .ih-hero[data-ready="true"] #ihCharacter { opacity: 1; }
+    #ihMessage {
+      position: absolute; left: 50%; top: clamp(6px, 2.5vh, 24px); z-index: 10;
+      padding: .45rem .95rem; border-radius: 999px; font-size: 12px; line-height: 1.2;
+      letter-spacing: .04em; white-space: nowrap; color: #5a1438; pointer-events: none;
+      background: rgba(255,255,255,.74); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      box-shadow: 0 8px 26px -12px rgba(90,20,56,.35), 0 0 0 1px rgba(90,20,56,.06);
+      opacity: 0; transform: translate(calc(-50% + var(--shift, 0px)), 6px);
+      transition: opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+    #ihMessage[data-show="true"] { opacity: 1; transform: translate(calc(-50% + var(--shift, 0px)), 0); }
+    #ihMessage[data-zone="left"]  { --shift: -18vw; }
+    #ihMessage[data-zone="right"] { --shift:  18vw; }
+    .ih-cursor { position: relative; display: inline-flex; width: 18px; height: 18px; flex: none; }
+    .ih-cursor svg { animation: ih-nudge 2.8s ease-in-out infinite; }
+    .ih-ring { position: absolute; left: -3px; top: -3px; width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid currentColor; opacity: 0; animation: ih-ping 2.8s ease-out infinite .95s; }
+    @keyframes ih-nudge {
+      0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(5px,3px) scale(1); }
+      52% { transform: translate(5px,3px) scale(.9); } 70% { transform: translate(0,0) scale(1); }
+    }
+    @keyframes ih-ping { 0% { transform: scale(.35); opacity: .45; } 100% { transform: scale(1.5); opacity: 0; } }
+    .ih-touch-only { display: none; }
+    @media (min-width: 768px) and (hover: hover) {
+      .ih-note { position: absolute; left: 5vw; top: 50%; transform: translateY(-50%); text-align: left; padding: 0; }
+      .ih-title { font-size: 46px; }
+      .ih-hint { justify-content: flex-start; }
+    }
+    @media (max-width: 767px), (hover: none) {
+      .ih-stage { height: 100%; }
+      .ih-desktop-only { display: none; }
+      .ih-touch-only { display: inline; }
+      #ihMessage[data-zone] { --shift: 0px; }
+      .ih-note { padding-top: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ih-cursor svg, .ih-ring { animation: none; }
+      #ihCharacter, #ihMessage { transition-duration: .01s; }
+    }
+    /* Intro strip (her original hero content, now below the character hero) */
+    .hero.ih-intro { min-height: auto; padding: 36px 20px 56px; }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+<div id="preloader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Loading Portfolio<span class="loader-dots"></span></div>
+</div>
+<div class="portfolio">
+  <nav class="navbar">
+    <div class="brand">Suwetha S</div>
+    <ul class="nav-links">
+      <li><a href="#ihHero">Home</a></li>
+      <li><a href="#about-me-section">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications-section">Certifications</a></li>
+      <li><a href="#experience">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+
+  <main id="main-content">
+  <section class="ih-hero" id="ihHero" aria-label="Introduction">
+    <div class="ih-glow" aria-hidden="true"></div>
+    <div class="ih-stage">
+      <div class="ih-note">
+        <h2 class="ih-title">I'm Suwetha S</h2>
+        <p class="ih-role">Full-Stack Developer</p>
+        <p class="ih-hint">
+          <span class="ih-cursor" aria-hidden="true">
+            <span class="ih-ring"></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.2v15.1l4.1-3.8 2.7 6.1 2.6-1.1-2.7-6 5.6-.4z"/></svg>
+          </span>
+          <span class="ih-desktop-only">Move cursor to call me !</span>
+          <span class="ih-touch-only">Tap to call me !</span>
+        </p>
+      </div>
+      <div class="ih-wrap">
+        <canvas id="ihCharacter" role="img" aria-label="Animated illustration of a developer working on a laptop who reacts when you move through the page"></canvas>
+        <div id="ihMessage" class="ih-message" data-show="false" data-zone="center" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+  <div class="hero ih-intro">
+     <span class="badge">Full-Stack Developer | MCA Graduate</span>
+      <h1>Hey, I'm <span class="gradient-text">Suwetha S</span></h1>
+      <p>Passionate Full-Stack Developer crafting beautiful and functional digital experiences with React, Next.js, Python, and modern web technologies. Currently seeking opportunities to build impactful projects.</p>
+    <div class="typing-line" aria-live="polite"><span id="typingSpan"></span><span class="typing-cursor" aria-hidden="true">&nbsp;</span></div>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Full Stack</div>
+        <div class="stat-label">Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Fresher</div>
+        <div class="stat-label">Status</div>
+      </div>
+    </div>
+
+    <div class="cta-buttons">
+      <a id="resumeDownloadLink" href="Suwetha.pdf" download="Suwetha_S_Resume.pdf" class="btn btn-primary">⬇ Download Resume</a>
+      <a href="#contact" class="btn btn-secondary">📧 Get In Touch</a>
+    </div>
+
+    <div class="social-row">
+      <a class="social-icon" href="https://github.com/smsuwetha" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-1.94c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+      </a>
+      <a class="social-icon" href="https://linkedin.com/in/suwetha-s-43901a373" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+      </a>
+      <a class="social-icon" href="mailto:smsuwetha30@gmail.com" title="Email" aria-label="Send email">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.24l8 6.51 8-6.51V18H4z"/></svg>
+      </a>
+      <a class="social-icon" href="tel:7639431206" title="Phone" aria-label="Call phone number">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="about-me" id="about-me-section">
+    <h2>About Me</h2>
+    <div class="about-me-text">
+      <div id="aboutContentSpan" class="about-typed-content"></div>
+    </div>
+  </div>
+
+
+  <section class="section" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" data-project="loop-ai">
+        <div class="project-header">🚀</div>
+        <div class="project-content">
+          <div class="project-title">Loop AI</div>
+          <div class="project-desc">AI-powered customer feedback platform with automated sentiment analysis. Built with Next.js 14 and FastAPI for real-time collaboration.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js 14</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/adi7773k/loop-ai-feedback-platform" class="project-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="zaara-market">
+        <div class="project-header">🛍️</div>
+        <div class="project-content">
+          <div class="project-title">Zaara Market</div>
+          <div class="project-desc">Full-stack e-commerce platform built with React 19. Modern UI with responsive design and seamless user experience.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">React 19</span>
+            <span class="tech-tag">Vite</span>
+            <span class="tech-tag">TypeScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/smsuwetha/Zaara-Market" class="project-link">GitHub</a>
+            <a href="https://zaara-market-onlineshoping.vercel.app/" target="_blank" rel="noopener" class="project-link">Live</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="learnjeni">
+        <div class="project-header">📚</div>
+        <div class="project-content">
+          <div class="project-title">Learnjeni LMS</div>
+          <div class="project-desc">Complete Learning Management System with role-based access control. Admin, Faculty, and Student dashboards with course management.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/smsuwetha/Learnjeni_management_system" class="project-link">GitHub</a>
+            <a href="https://learnjenimanagementsystem-1s3lp39he-smsuwethas-projects.vercel.app/" target="_blank" rel="noopener" class="project-link">Live</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-project="chilli-curry">
+        <div class="project-header">🍽️</div>
+        <div class="project-content">
+          <div class="project-title">Chilli & Curry</div>
+          <div class="project-desc">Restaurant website with menu, booking system, and customer reviews. Responsive design built with vanilla HTML, CSS, and JavaScript.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/smsuwetha/chilli-curry-restaurant" class="project-link">GitHub</a>
+            <a href="https://chilli-curry-restaurant.vercel.app/" target="_blank" rel="noopener" class="project-link">Live</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">🌐</div>
+        <div class="project-content">
+          <div class="project-title">Landing Page</div>
+          <div class="project-desc">Professional single-page website built to maximize user engagement. PHP-powered contact form with email handling capabilities.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3 (Flexbox)</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">PHP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://landing-page-ivory-seven-39.vercel.app/" class="project-link">Live</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-title">🎨 Frontend</div>
+        <div class="skill-items">
+          <span class="skill-item">React</span>
+          <span class="skill-item">Next.js</span>
+          <span class="skill-item">React 19</span>
+          <span class="skill-item">Tailwind CSS</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">HTML5</span>
+          <span class="skill-item">CSS3</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-title">⚙️ Backend</div>
+        <div class="skill-items">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Flask</span>
+          <span class="skill-item">FastAPI</span>
+          <span class="skill-item">Node.js</span>
+          <span class="skill-item">Express.js</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-title">🗄️ Databases</div>
+        <div class="skill-items">
+          <span class="skill-item">MySQL</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-item">SQL</span>
+                                            
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-title">🚀 Tools & Platforms</div>
+        <div class="skill-items">
+          <span class="skill-item">Git & GitHub</span>
+          <span class="skill-item">Vercel</span>
+          <span class="skill-item">VS Code</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-title">🤖 AI & APIs</div>
+        <div class="skill-items">
+          <span class="skill-item">Claude AI</span>
+          <span class="skill-item">Groq AI</span>
+          <span class="skill-item">OpenAI API</span>
+          <span class="skill-item">Google Sheets API</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-title">🎓 Other</div>
+        <div class="skill-items">
+          <span class="skill-item">UI/UX Design</span>
+          <span class="skill-item">Responsive Design</span>
+          <span class="skill-item">Web Performance</span>
+          <span class="skill-item">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section  class="certifications" id="certifications-section">
+   <h2>Certifications & Learning</h2>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Full Stack Development Internship</div>
+          <div class="cert-meta">e-Soft Solutions, Trichy • June 2025</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <div class="cert-name">30 Days MasterClass in Full Stack Development</div>
+          <div class="cert-meta">NoviTech R&D Pvt Ltd • Jan–Feb 2026</div>
+          <span class="cert-id">ID: NT_B0759BE35</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name">Web Development with Python Flask</div>
+          <div class="cert-meta">GUVI Geek Networks, HCL Group • Jan 2026</div>
+          <span class="cert-id">ID: 47H8261l9k</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name">Python Programming Course: Beginner to Advanced with Certification</div>
+          <div class="cert-meta">GUVI Geek Networks, HCL Group • Issued Aug 30, 2026</div>
+          <span class="cert-id">ID: 07X684w87bxp5118e9</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+<!-- Experience Timeline -->
+  <section class="section" id="experience">
+   <h2>Education &amp; Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-title">Master of Computer Applications (MCA)</div>
+        <div class="timeline-meta">Annamalai University, Annamalai Nagar, Chidambaram &bull; 2024 &ndash; 2026</div>
+        <span class="timeline-badge">CGPA: 8.0</span>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-title">Full Stack Development Internship</div>
+        <div class="timeline-meta">e-Soft Solutions, Trichy &bull; June 2025</div>
+        <span class="timeline-badge">HTML,CSS, PHP, MySQL</span>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-title">Bachelor of Computer Application (BCA)</div>
+        <div class="timeline-meta">Vivekananda College of Arts and Science for Women, Sirkali &bull; 2020 &ndash; 2023</div>
+        <span class="timeline-badge">CGPA: 8.65</span>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-title">HSC</div>
+        <div class="timeline-meta">Saraswathi Matriculation Higher Secondary School, Kollidam &bull; 2019 &ndash; 2020</div>
+        <span class="timeline-badge">62.5%</span>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-title">SSLC</div>
+        <div class="timeline-meta">Government Higher Secondary School, Pudhupattinam</div>
+        <span class="timeline-badge">66.8%</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-sub">Have a project in mind or just want to say hi? Drop a message below.</div>
+    <form class="contact-form" id="contactForm">
+      <label for="contactName" class="visually-hidden">Your Name</label>
+      <input type="text" id="contactName" name="name" placeholder="Your Name" required />
+      <label for="contactEmail" class="visually-hidden">Your Email</label>
+      <input type="email" id="contactEmail" name="email" placeholder="Your Email" required />
+      <label for="contactMessage" class="visually-hidden">Your Message</label>
+      <textarea id="contactMessage" name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">Send Message</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </section>
+  </main>
+
+  <div class="footer" role="contentinfo">
+    <div class="footer-text"> Suwetha S | Portfolio © 2026</div>
+  </div>
+</div>
+
+  <script>
+    // Typing Animation Function - Repeating
+    function typeText(elementId, text, speed = 50, repeatDelay = 3000) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      let index = 0;
+      let isDeleting = false;
+
+      function type() {
+        const currentText = element.textContent;
+        
+        if (!isDeleting && index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, speed);
+        } else if (isDeleting && index > 0) {
+          element.textContent = text.substring(0, index - 1);
+          index--;
+          setTimeout(type, speed / 2);
+        } else if (!isDeleting && index === text.length) {
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, repeatDelay);
+        } else if (isDeleting && index === 0) {
+          isDeleting = false;
+          setTimeout(type, 500);
+        }
+      }
+
+      type();
+    }
+
+    // Typing Animation Function - Single Pass (One Time)
+    function typeTextOnce(elementId, text, speed = 40) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      let index = 0;
+
+      function type() {
+        if (index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, speed);
+        }
+      }
+
+      type();
+    }
+
+    // Start typing animations when page loads
+     var roles = ['Full-Stack Developer', 'Problem Solver', 'MCA Graduate (2026)', 'Fresher Ready to Learn'];
+  var typingSpan = document.getElementById('typingSpan');
+  var roleIndex = 0, charIndex = 0, deleting = false;
+  function typeLoop() {
+    var current = roles[roleIndex];
+    if (!deleting) {
+      charIndex++;
+      typingSpan.textContent = current.substring(0, charIndex);
+      if (charIndex === current.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
+    } else {
+      charIndex--;
+      typingSpan.textContent = current.substring(0, charIndex);
+      if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 40 : 80);
+  }
+  if (typingSpan) typeLoop();
+    // Parallax Scrolling
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      document.documentElement.style.setProperty('--parallax', scrolled * 0.5 + 'px');
+    });
+
+    // Modal Functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Project modal mappings
+    const projectModals = {
+      'loop-ai': 'loopAiModal',
+      'zaara-market': 'zaaraMarketModal',
+      'chilli-curry': 'chilliCurryModal',
+      'learnjeni': 'learnjeniModal'
+    };
+
+    // Attach modal listeners to project cards
+    document.querySelectorAll('.project-modal-trigger').forEach(trigger => {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        const projectCard = this.closest('.project-card');
+        const projectId = projectCard.getAttribute('data-project');
+        const modalId = projectModals[projectId];
+        if (modalId) openModal(modalId);
+      });
+    });
+
+    // Close modal when clicking outside content
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeModal(this.id);
+        }
+      });
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        setTimeout(() => {
+          preloader.classList.add('hidden');
+          setTimeout(() => preloader.style.display = 'none', 600);
+        }, 400);
+      }
+    });
+
+    // Animated counters with intersection observer
+    const counters = document.querySelectorAll('[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const target = parseInt(element.getAttribute('data-target'));
+          let current = 0;
+          const increment = target / 40;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              element.textContent = target;
+              clearInterval(timer);
+            } else {
+              element.textContent = Math.floor(current);
+            }
+          }, 30);
+          
+          counterObserver.unobserve(element);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // Intersection Observer for About Me Section - Start typing when visible
+    const aboutMeSection = document.getElementById('about-me-section');
+    if (aboutMeSection) {
+      const aboutObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const aboutContentElement = document.getElementById('aboutContentSpan');
+            
+            // Only start typing if not already started
+            if (aboutContentElement && aboutContentElement.textContent === '') {
+              const aboutContent = "I'm Suwetha S, a Full-Stack Web Developer who enjoys turning ideas into clean, working products — from a React frontend to a Python/Flask backend backed by MySQL.\n\nI recently completed my MCA at Annamalai University and picked up hands-on, real-world experience through a Full Stack Development internship at e-Soft Solutions, where I worked across the stack with Python, Flask and MySQL.\n\nI like projects that mix a good user experience with solid backend logic — whether that's an AI feedback platform, an online store, or a restaurant ordering site. Always keen to learn, build, and ship.";
+              
+              typeTextOnce('aboutContentSpan', aboutContent, 30);
+            }
+            
+            // Stop observing after animation starts
+            aboutObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      aboutObserver.observe(aboutMeSection);
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+      });
+
+      // Load saved theme
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '☀️';
+      }
+    }
+
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const status = document.getElementById('formStatus');
+        const btn = this.querySelector('button[type="submit"]');
+        
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        status.classList.remove('show', 'success', 'error');
+
+        const formData = new FormData(this);
+        fetch('https://formsubmit.co/ajax/smsuwetha30@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => {
+          status.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+          status.classList.add('show', 'success');
+          contactForm.reset();
+        })
+        .catch(() => {
+          status.textContent = '✗ Error sending message. Please email me at smsuwetha30@gmail.com';
+          status.classList.add('show', 'error');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+        });
+      });
+    }
+
+    // Scroll animations for elements
+    const scrollElements = document.querySelectorAll('.project-card, .skill-category, .cert-card, .timeline-item, .testimonial-card, .contribution-card, .contact-info-card');
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'slideInDown 0.6s ease forwards';
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    scrollElements.forEach(el => scrollObserver.observe(el));
+  </script>
+
+<script>
+(() => {
+
+/* ======================================================================
+   Frame engine (canvas, preloading, sliding decode window, sequencer)
+   ====================================================================== */
+/**
+ * Frame-sequence character engine (framework-free).
+ *
+ * Owns the <canvas>, preloads the frame files, keeps only a small sliding
+ * window of frames decoded in memory, and runs a tiny sequencer on
+ * requestAnimationFrame. React never re-renders while this runs: it only
+ * calls reportZone() / playGreeting() and receives onMessage / onReady.
+ *
+ * The cursor never drives the character directly. reportZone() only says
+ * which third of the hero the cursor is in; the engine decides what to play.
+ */
+/** Everything you are likely to tweak while tuning the feel. */
+const TUNING = {
+    /** Cursor must stay in a zone this long before it counts (stops sweeps across the centre from firing the greeting). */
+    dwellMs: 140,
+    reactionHoldMs: 2500,
+    greetHoldMs: 3200,
+    reactionFadeInMs: 220,
+    reactionFadeOutMs: 260,
+    greetFadeInMs: 260,
+    greetFadeOutMs: 700,
+    interruptFadeMs: 300,
+    /** Blend neighbouring frames so 24fps footage looks smooth on 60/120Hz screens. */
+    frameBlend: true,
+    decodeAhead: 8,
+    decodeBehind: 2,
+    warmFrames: 3,
+    maxConcurrentFetches: 6,
+    /** Mobile: at least this fraction of the frame width stays visible (keeps the laptop in view). */
+    mobileMinVisible: 0.62,
+    /** Mobile: 0 = top, 1 = bottom of the canvas area. */
+    mobileBiasY: 0.65,
+    maxDpr: 2,
+};
+const SEGMENTS = ['idle', 'center', 'greet', 'left', 'right'];
+const linear = (t) => t;
+const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
+class CharacterEngine {
+    constructor(opts) {
+        this.opts = opts;
+        this.ready = false;
+        this.blobs = {};
+        this.loaded = {};
+        this.failed = {};
+        this.bitmaps = new Map();
+        this.decoding = new Map();
+        this.active = false;
+        this.destroyed = false;
+        this.raf = 0;
+        this.seq = null;
+        this.idlePos = 0;
+        this.dir = 1;
+        this.shown = { seg: 'idle', pos: 0 };
+        this.lastBmp = null;
+        this.fade = null;
+        this.windowKey = '';
+        this.candidate = null;
+        this.candidateSince = 0;
+        this.currentZone = null;
+        this.playedZone = null;
+        this.box = { cw: 0, ch: 0, dx: 0, dy: 0, dw: 0, dh: 0 };
+        this.lastTs = 0;
+        /* ------------------------------------------------------------------ */
+        /* Loop and sequencer                                                  */
+        /* ------------------------------------------------------------------ */
+        this.tick = (ts) => {
+            if (!this.active || this.destroyed) {
+                this.raf = 0;
+                return;
+            }
+            const dt = this.lastTs ? Math.min(ts - this.lastTs, 50) : 16;
+            this.lastTs = ts;
+            if (this.ready) {
+                this.update(ts, dt);
+                this.render(ts);
+            }
+            this.raf = requestAnimationFrame(this.tick);
+        };
+        const ctx = opts.canvas.getContext('2d');
+        if (!ctx)
+            throw new Error('2D canvas is not available');
+        this.ctx = ctx;
+        for (const seg of SEGMENTS) {
+            this.blobs[seg] = new Array(opts.manifest.segments[seg].count);
+            this.loaded[seg] = 0;
+            this.failed[seg] = false;
+        }
+        this.ro = new ResizeObserver(() => this.layout());
+        this.ro.observe(opts.canvas);
+    }
+    /* ------------------------------------------------------------------ */
+    /* Public API                                                          */
+    /* ------------------------------------------------------------------ */
+    /** Start fetching frames. Idle first so the hero shows up quickly. */
+    async load() {
+        const { manifest } = this.opts;
+        const queue = [];
+        for (const seg of SEGMENTS) {
+            for (let i = 0; i < manifest.segments[seg].count; i++)
+                queue.push([seg, i]);
+        }
+        let next = 0;
+        const worker = async () => {
+            while (!this.destroyed && next < queue.length) {
+                const [seg, i] = queue[next++];
+                try {
+                    const res = await fetch(this.url(seg, i));
+                    if (!res.ok)
+                        throw new Error(String(res.status));
+                    this.blobs[seg][i] = await res.blob();
+                }
+                catch {
+                    this.failed[seg] = true;
+                }
+                this.loaded[seg]++;
+                const n = manifest.segments[seg].count;
+                if (i === 0 || i === n - 1)
+                    void this.requestBitmap(seg, i);
+                if (this.loaded[seg] === n && !this.failed[seg]) {
+                    for (let k = 0; k < Math.min(TUNING.warmFrames, n); k++)
+                        void this.requestBitmap(seg, k);
+                }
+                if (!this.ready && seg === 'idle' && i === 0)
+                    await this.becomeReady();
+            }
+        };
+        await Promise.all(Array.from({ length: TUNING.maxConcurrentFetches }, worker));
+    }
+    /** Pause / resume the rAF loop (offscreen or hidden tab). */
+    setActive(active) {
+        if (active === this.active || this.destroyed)
+            return;
+        this.active = active;
+        if (active) {
+            this.lastTs = 0;
+            this.raf = requestAnimationFrame(this.tick);
+        }
+        else {
+            cancelAnimationFrame(this.raf);
+            this.raf = 0;
+        }
+    }
+    /** Report which zone the cursor is in, or null when it leaves the hero. */
+    reportZone(zone) {
+        if (zone === null) {
+            this.candidate = null;
+            this.currentZone = null;
+            this.playedZone = null;
+            return;
+        }
+        if (zone !== this.candidate) {
+            this.candidate = zone;
+            this.candidateSince = performance.now();
+        }
+    }
+    /** Mobile / touch: play the greeting directly. Returns false if busy or not loaded yet. */
+    playGreeting() {
+        if (!this.ready || this.seq)
+            return false;
+        return this.startSequence('center', false);
+    }
+    destroy() {
+        this.destroyed = true;
+        this.setActive(false);
+        this.ro.disconnect();
+        for (const b of this.bitmaps.values())
+            b.close();
+        this.bitmaps.clear();
+        this.decoding.clear();
+        this.lastBmp = null;
+        this.fade = null;
+    }
+    /* ------------------------------------------------------------------ */
+    /* Loading and decoding                                                */
+    /* ------------------------------------------------------------------ */
+    url(seg, i) {
+        const ext = this.opts.manifest.ext ?? 'webp';
+        return `${this.opts.basePath}/${seg}/${seg}_${String(i + 1).padStart(3, '0')}.${ext}`;
+    }
+    segmentReady(seg) {
+        return !this.failed[seg] && this.loaded[seg] >= this.opts.manifest.segments[seg].count;
+    }
+    async becomeReady() {
+        const first = await this.requestBitmap('idle', 0);
+        if (!first || this.destroyed)
+            return;
+        this.ready = true;
+        this.lastBmp = first;
+        this.layout();
+        this.opts.onReady();
+    }
+    requestBitmap(seg, i) {
+        const key = `${seg}:${i}`;
+        const have = this.bitmaps.get(key);
+        if (have)
+            return Promise.resolve(have);
+        const inflight = this.decoding.get(key);
+        if (inflight)
+            return inflight;
+        const blob = this.blobs[seg][i];
+        if (!blob)
+            return Promise.resolve(null);
+        const p = createImageBitmap(blob)
+            .then((bmp) => {
+            this.decoding.delete(key);
+            if (this.destroyed) {
+                bmp.close();
+                return null;
+            }
+            this.bitmaps.set(key, bmp);
+            return bmp;
+        })
+            .catch(() => {
+            this.decoding.delete(key);
+            return null;
+        });
+        this.decoding.set(key, p);
+        return p;
+    }
+    windowIndices(seg, pos, dir, loop) {
+        const n = this.opts.manifest.segments[seg].count;
+        const base = Math.floor(pos);
+        const out = [];
+        for (let k = -TUNING.decodeBehind; k <= TUNING.decodeAhead; k++) {
+            const raw = base + (dir === 1 ? k : -k);
+            const j = loop ? ((raw % n) + n) % n : raw;
+            if (j >= 0 && j < n)
+                out.push(j);
+        }
+        return out;
+    }
+    /** The next play step after the current one, so its frames are decoded before we need them. */
+    upcoming() {
+        if (!this.seq)
+            return null;
+        for (let j = this.seq.index + 1; j < this.seq.steps.length; j++) {
+            const s = this.seq.steps[j];
+            if (s.type === 'play')
+                return { seg: s.seg, pos: s.from, dir: s.to >= s.from ? 1 : -1 };
+        }
+        return null;
+    }
+    keepSet() {
+        const keep = new Set();
+        const { segments } = this.opts.manifest;
+        for (const seg of SEGMENTS) {
+            const n = segments[seg].count;
+            keep.add(`${seg}:0`);
+            keep.add(`${seg}:${n - 1}`);
+            for (let i = 0; i < Math.min(TUNING.warmFrames, n); i++)
+                keep.add(`${seg}:${i}`);
+        }
+        const loop = this.shown.seg === 'idle' && !this.seq;
+        for (const j of this.windowIndices(this.shown.seg, this.shown.pos, this.dir, loop)) {
+            keep.add(`${this.shown.seg}:${j}`);
+        }
+        const up = this.upcoming();
+        if (up)
+            for (const j of this.windowIndices(up.seg, up.pos, up.dir, false))
+                keep.add(`${up.seg}:${j}`);
+        return keep;
+    }
+    ensureDecoded() {
+        const key = `${this.shown.seg}:${Math.floor(this.shown.pos)}:${this.dir}:${this.seq?.index ?? -1}`;
+        if (key === this.windowKey)
+            return;
+        this.windowKey = key;
+        const loop = this.shown.seg === 'idle' && !this.seq;
+        for (const j of this.windowIndices(this.shown.seg, this.shown.pos, this.dir, loop)) {
+            void this.requestBitmap(this.shown.seg, j);
+        }
+        const up = this.upcoming();
+        if (up)
+            for (const j of this.windowIndices(up.seg, up.pos, up.dir, false))
+                void this.requestBitmap(up.seg, j);
+        const keep = this.keepSet();
+        for (const [k, bmp] of this.bitmaps) {
+            if (keep.has(k) || bmp === this.lastBmp || bmp === this.fade?.from)
+                continue;
+            bmp.close();
+            this.bitmaps.delete(k);
+        }
+    }
+    /** Best available frame: exact, else nearest decoded neighbour, else whatever was last on screen. */
+    frame(seg, i) {
+        const exact = this.bitmaps.get(`${seg}:${i}`);
+        if (exact)
+            return exact;
+        for (let d = 1; d <= 6; d++) {
+            const near = this.bitmaps.get(`${seg}:${i - d}`) ?? this.bitmaps.get(`${seg}:${i + d}`);
+            if (near)
+                return near;
+        }
+        return this.lastBmp;
+    }
+    /* ------------------------------------------------------------------ */
+    /* Layout and rendering                                                */
+    /* ------------------------------------------------------------------ */
+    layout() {
+        const c = this.opts.canvas;
+        const dpr = Math.min(window.devicePixelRatio || 1, TUNING.maxDpr);
+        const cw = Math.max(1, Math.round(c.clientWidth * dpr));
+        const ch = Math.max(1, Math.round(c.clientHeight * dpr));
+        if (c.width !== cw || c.height !== ch) {
+            c.width = cw;
+            c.height = ch;
+        }
+        const { width: iw, height: ih, focusX, fitWidth } = this.opts.manifest;
+        let scale;
+        let biasY;
+        const mobile = this.opts.isMobile();
+        if (mobile) {
+            // Cover-ish crop so she stays big, but never crop into the character (fitWidth) or hide the laptop.
+            const minVisible = Math.min(1, Math.max(TUNING.mobileMinVisible, (fitWidth ?? 0) * 1.06));
+            scale = Math.min(Math.max(cw / iw, ch / ih), cw / (iw * minVisible));
+            biasY = TUNING.mobileBiasY;
+        }
+        else {
+            scale = Math.min(cw / iw, ch / ih); // contain: whole laptop and head always visible
+            biasY = 1; // bottom aligned
+        }
+        const dw = iw * scale;
+        const dh = ih * scale;
+        // Put the character (not the frame) on the horizontal centre.
+        let dx = cw / 2 - (focusX ?? 0.5) * dw;
+        if (dw >= cw)
+            dx = Math.min(0, Math.max(cw - dw, dx)); // never leave an empty strip when the frame is wider than the canvas
+        this.box = { cw, ch, dw, dh, dx, dy: (ch - dh) * biasY };
+        this.ctx.imageSmoothingQuality = 'high';
+        if (this.ready)
+            this.render(performance.now());
+    }
+    blit(bmp) {
+        const { dx, dy, dw, dh } = this.box;
+        this.ctx.drawImage(bmp, dx, dy, dw, dh);
+    }
+    render(now) {
+        const { ctx } = this;
+        const { cw, ch } = this.box;
+        ctx.globalAlpha = 1;
+        ctx.clearRect(0, 0, cw, ch);
+        let t = 1;
+        if (this.fade) {
+            const raw = (now - this.fade.start) / this.fade.dur;
+            if (raw >= 1) {
+                this.fade = null;
+            }
+            else {
+                this.blit(this.fade.from);
+                t = easeInOutSine(Math.max(0, raw));
+            }
+        }
+        const { seg, pos } = this.shown;
+        const n = this.opts.manifest.segments[seg].count;
+        const looping = seg === 'idle' && !this.seq;
+        const p = Math.min(Math.max(pos, 0), n - 1 + (looping ? 0.999 : 0));
+        const i0 = Math.floor(p);
+        const f = p - i0;
+        const i1 = looping ? (i0 + 1) % n : Math.min(i0 + 1, n - 1);
+        const a = this.frame(seg, i0);
+        if (a) {
+            ctx.globalAlpha = t;
+            this.blit(a);
+            this.lastBmp = a;
+        }
+        if (TUNING.frameBlend && f > 0.03 && i1 !== i0) {
+            const b = this.frame(seg, i1);
+            if (b && b !== a) {
+                ctx.globalAlpha = t * f;
+                this.blit(b);
+                if (f >= 0.5)
+                    this.lastBmp = b;
+            }
+        }
+        ctx.globalAlpha = 1;
+    }
+    update(now, dt) {
+        if (this.candidate && this.candidate !== this.currentZone && now - this.candidateSince >= TUNING.dwellMs) {
+            this.currentZone = this.candidate;
+        }
+        if (!this.opts.isMobile())
+            this.consider();
+        if (this.seq)
+            this.advance(dt);
+        else
+            this.advanceIdle(dt);
+        this.ensureDecoded();
+    }
+    /** Decide whether the current zone should start (or interrupt) something. */
+    consider() {
+        const z = this.currentZone;
+        if (!z || z === this.playedZone)
+            return;
+        if (!this.seq) {
+            this.startSequence(z, false);
+        }
+        else if (this.seq.kind === 'react' && this.seq.zone !== z) {
+            // A look-left/right can be cut short; the greeting never is.
+            this.startSequence(z, true);
+        }
+    }
+    startSequence(zone, interrupt) {
+        const needed = zone === 'center' ? ['center', 'greet'] : [zone];
+        if (!needed.every((s) => this.segmentReady(s)))
+            return false;
+        if (this.seq)
+            this.opts.onMessage(null, this.seq.zone);
+        const greet = zone === 'center';
+        const steps = greet ? this.greetSteps() : this.reactSteps(zone);
+        if (interrupt) {
+            const first = steps[0];
+            if (first.type === 'play')
+                first.fadeMs = Math.max(first.fadeMs, TUNING.interruptFadeMs);
+        }
+        this.playedZone = zone;
+        this.seq = {
+            zone,
+            kind: greet ? 'greet' : 'react',
+            steps,
+            index: 0,
+            elapsed: 0,
+            cueIndex: 0,
+            entered: false,
+            endFadeMs: greet ? TUNING.greetFadeOutMs : TUNING.reactionFadeOutMs,
+        };
+        return true;
+    }
+    play(seg, from, to, ease, fadeMs, cues) {
+        const fps = this.opts.manifest.segments[seg].fps;
+        const reduced = this.opts.reducedMotion;
+        return {
+            type: 'play',
+            seg,
+            from: reduced ? to : from,
+            to,
+            durationMs: reduced ? 250 : Math.max(16, (Math.abs(to - from) / fps) * 1000),
+            ease,
+            fadeMs,
+            cues,
+        };
+    }
+    reactSteps(zone) {
+        const n = this.opts.manifest.segments[zone].count;
+        const text = zone === 'left' ? 'Anyone here on the left?' : 'Anyone here on the right?';
+        return [
+            this.play(zone, 0, n - 1, easeInOutSine, TUNING.reactionFadeInMs, [{ at: 0.15, text }]),
+            { type: 'hold', durationMs: TUNING.reactionHoldMs, cues: [] },
+            this.play(zone, n - 1, 0, easeInOutSine, 0, [{ at: 0, text: null }]),
+        ];
+    }
+    greetSteps() {
+        const nc = this.opts.manifest.segments.center.count;
+        const ng = this.opts.manifest.segments.greet.count;
+        return [
+            this.play('center', 0, nc - 1, linear, TUNING.greetFadeInMs, [{ at: 0.25, text: "Hey, it's you!" }]),
+            this.play('greet', 0, ng - 1, linear, 90, [
+                { at: 0.35, text: 'Hiiii!' },
+                { at: 0.8, text: 'Check out the portfolio' },
+            ]),
+            { type: 'hold', durationMs: TUNING.greetHoldMs, cues: [{ at: 0.85, text: null }] },
+        ];
+    }
+    advance(dt) {
+        const s = this.seq;
+        if (!s)
+            return;
+        const step = s.steps[s.index];
+        if (!s.entered) {
+            s.entered = true;
+            s.elapsed = 0;
+            s.cueIndex = 0;
+            if (step.type === 'play' && step.fadeMs > 0)
+                this.beginFade(step.fadeMs);
+        }
+        s.elapsed += dt;
+        const p = Math.min(1, s.elapsed / step.durationMs);
+        if (step.type === 'play') {
+            this.shown = { seg: step.seg, pos: step.from + (step.to - step.from) * step.ease(p) };
+            this.dir = step.to >= step.from ? 1 : -1;
+        }
+        while (s.cueIndex < step.cues.length && step.cues[s.cueIndex].at <= p) {
+            this.opts.onMessage(step.cues[s.cueIndex].text, s.zone);
+            s.cueIndex++;
+        }
+        if (p >= 1) {
+            s.index++;
+            s.entered = false;
+            if (s.index >= s.steps.length)
+                this.endSequence();
+        }
+    }
+    endSequence() {
+        const s = this.seq;
+        if (!s)
+            return;
+        this.seq = null;
+        this.beginFade(s.endFadeMs);
+        this.idlePos = 0;
+        this.dir = 1;
+        this.shown = { seg: 'idle', pos: 0 };
+        this.opts.onMessage(null, s.zone);
+    }
+    advanceIdle(dt) {
+        const { count, fps } = this.opts.manifest.segments.idle;
+        if (!this.opts.reducedMotion)
+            this.idlePos = (this.idlePos + (fps * dt) / 1000) % count;
+        this.shown = { seg: 'idle', pos: this.idlePos };
+        this.dir = 1;
+    }
+    beginFade(ms) {
+        if (ms > 0 && this.lastBmp)
+            this.fade = { from: this.lastBmp, start: performance.now(), dur: ms };
+    }
+}
+
+
+/* ======================================================================
+   Page wiring
+   ====================================================================== */
+(() => {
+  const FRAMES_PATH = 'frames'; // folder with manifest.json + idle/left/right/center/greet
+  const hero = document.getElementById('ihHero');
+  const canvas = document.getElementById('ihCharacter');
+  const msg = document.getElementById('ihMessage');
+
+  const mobileMq = window.matchMedia('(max-width: 767px), (hover: none)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Phone testing: open the page with ?zones to drag a finger across the hero and trigger left / centre / right.
+  const forceZones = new URLSearchParams(location.search).has('zones');
+  const isMobile = () => !forceZones && mobileMq.matches;
+  if (forceZones) hero.style.touchAction = 'none';
+
+  let engine = null, visible = false, autoGreeted = false, zone = null;
+
+  const syncActive = () => engine && engine.setActive(visible && !document.hidden);
+
+  const maybeAutoGreet = () => {
+    if (!engine || !engine.ready || !visible || !isMobile() || autoGreeted) return;
+    autoGreeted = true;
+    setTimeout(() => engine.playGreeting(), 500);
+  };
+
+  const showMessage = (text, z) => {
+    msg.dataset.zone = z;
+    if (text) { msg.textContent = text; msg.dataset.show = 'true'; }
+    else { msg.dataset.show = 'false'; }
+  };
+
+  fetch(FRAMES_PATH + '/manifest.json', { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('manifest.json ' + r.status); return r.json(); })
+    .then((manifest) => {
+      engine = new CharacterEngine({
+        canvas, manifest, basePath: FRAMES_PATH,
+        isMobile,
+        reducedMotion: reduced,
+        onMessage: showMessage,
+        onReady: () => { hero.dataset.ready = 'true'; maybeAutoGreet(); },
+      });
+      syncActive();
+      engine.load();
+    })
+    .catch((err) => console.warn('Hero animation could not start (open the page through a local server, not file://):', err));
+
+  /* Thirds, with a small hysteresis so the cursor does not flicker on a boundary. */
+  const zoneFromX = (fx, prev) => {
+    const h = 0.02; let l = 1 / 3, r = 2 / 3;
+    if (prev === 'left') l += h; else if (prev === 'right') r -= h;
+    else if (prev === 'center') { l -= h; r += h; }
+    return fx < l ? 'left' : fx > r ? 'right' : 'center';
+  };
+
+  const onMove = (e) => {
+    if (!engine || isMobile() || (e.pointerType === 'touch' && !forceZones)) return;
+    const r = hero.getBoundingClientRect();
+    zone = zoneFromX((e.clientX - r.left) / r.width, zone);
+    engine.reportZone(zone);
+  };
+  hero.addEventListener('pointermove', onMove);
+  hero.addEventListener('pointerleave', () => { zone = null; if (engine) engine.reportZone(null); });
+  hero.addEventListener('pointerdown', (e) => {
+    if (!engine) return;
+    if (forceZones) onMove(e);
+    else if (e.pointerType === 'touch' || isMobile()) engine.playGreeting();
+  });
+  document.addEventListener('visibilitychange', syncActive);
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting; syncActive(); maybeAutoGreet();
+  }, { threshold: 0.3 }).observe(hero);
+})();
+
+})();
+</script>
+</body>
+</html>
